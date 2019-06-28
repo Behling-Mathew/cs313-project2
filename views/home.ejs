@@ -1,164 +1,24 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head> 
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>JSON and AJAX | CIT 261</title>
-    <meta name="description" content="This page serves to demonstrate an example of working with JSON and AJAX">
+    <title>Pokedex | Original 150</title>
+    <meta name="description" content="This Pokedex contains data for the original 151 Pokemon.">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-      
-  <style>
-        
-        body {
-            background-color: white;
-            font-family: 'Roboto Slab', serif;
-            font-size: 1.4rem;
-            width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            color: white;
-            text-align: center;
-            padding-top: 30px;
-            
-            
-            
-        }
-        h1 {
-            color: white;
-        }
-        .grid-cont{
-            display: grid;
-            grid-template-columns: 350px 200px 210px;
-            border: solid 1px black;
-            border-radius: 20px;
-            background-color: #3B4CCA;
-            padding: 10px;
-            margin-top: 10px;
-            text-align: left;
-        }
-      
-        .grid-cont:hover {
-          background-color: black;
-       }
-        .grid-cont img {
-            margin-left: auto;
-            margin-right: auto;   
-        }
-       
-        header {
-            background-color: #CC0000;
-            height: 210px;
-            border-radius: 10px;
-        }
-        
-        
-        #btn {
-            background-color: #FFDE00;
-            height: 45px;
-            border-radius: 15px;
-            color: #3B4CCA;
-            font-weight: bold;
-            font-size: 1.6rem;
-        }
-        #btn:hover {
-          background-color: #3B4CCA; 
-          color: #FFDE00;
-        }
-        
-        .name {
-            color: red;
-            font-weight: bold;
-        }
-        
-        .hide-me {
-            visibility: hidden;
-        }
-        .lower {
-          text-transform: lowercase;
-            color: yellow;
-        }
-    
-  </style> 
-     
-    
-  </head>
-  <body>
-      <header>
-      <h1>Gen 1 Starter Pokémon</h1>
-      <h3 id="h3">Click Button to Display</h3>      
-      <button id="btn">Fetch Pokémon</button>
-      </header>
-    
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Gen 1 Pokémon</h1>
+        <h3 id="h3">Click Button to Display</h3>
+        <button id="btn">Fetch Pokémon</button>
+    </header>
     <main>
-
-        <div id="pokemon-info"></div>
-
-    </main>  
-  </body>
-    <script>
-    
-        var pageCounter = 1;
-        var pokemonContainer = document.getElementById("pokemon-info");
-        var btn = document.getElementById('btn');
-        var h3 = document.getElementById('h3')
-        
-        btn.addEventListener("click", function() {
-            
-            // Request JSON file
-            var myRequest = new XMLHttpRequest();
-            myRequest.open('GET', 'https://behling-mathew.github.io/json/pokedex.json');
-            myRequest.onload = function() {
-                
-               // JSON parse    
-               var myData = JSON.parse(myRequest.responseText);
-               renderHTML(myData);
-               btn.classList.add("hide-me");
-               h3.classList.add("hide-me");
-            
-               var pokeJSON = JSON.stringify(myData);
-               console.log(myData);
-               
-            };
-          
-        myRequest.onerror = function() {
-                console.log("Connection error");
-            };
-        myRequest.send();
-            pageCounter++;
-            
-            if (pageCounter > 3) {
-                btn.classList.add("hide-me");
-            }
-                             
-        });
-     
-        function renderHTML(data) {
-            var htmlString = "";
-            
-            for (i = 0; i < 9; i++) {
-                
-                htmlString += "<div class='grid-cont'>" +
-                    "<img src='" + data[i].sprite + "'>" +
-                    "<p><span class='name'>" + data[i].name.english + "</span> is a <span class='lower'>" + data[i].type[0].toLowerCase() + "</span>";
-                    if (typeof data[i].type[1] !== 'undefined'){
-                    
-                    htmlString += " and <span class='lower'>" + data[i].type[1] + "</span>";
-                    }
-                     
-                    htmlString += " type pokémon.</p>" +
-                    "<ul><li>HP: " + data[i].base.HP + "</li>" +
-                    "<li>Attack: " + data[i].base.Attack + "</li>" +
-                    "<li>Defense: " + data[i].base.Defense + "</li>" +
-                    "<li>Sp. Attack: " + data[i].base["Sp. Attack"] + "</li>" +
-                    "<li>Sp. Defense: " + data[i].base["Sp. Defense"] + "</li>" +
-                    "<li>Speed: " + data[i].base.Speed + "</li>" +
-                    "</ul></div>";
-                
-            }
-       
-            pokemonContainer.insertAdjacentHTML('beforeend', htmlString);
-        }
-        
-  
-    </script> 
+        <div class="pokemonsters"></div>
+    </main>
+</body>
+<script src="js/request-api.js"></script>
 </html>

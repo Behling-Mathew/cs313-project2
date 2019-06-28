@@ -11,7 +11,8 @@ app.set("view engine", "ejs");
 app.get("/", function(req, res) {
     console.log("Received a request for /");
     
-    res.write("You are in the root.");
+    //res.write("You are in the root.");
+    res.render("home");
     res.end();
 });
 
