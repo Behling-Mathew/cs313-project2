@@ -3,22 +3,29 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pokedex | Original 150</title>
+    <title>Pokedex | Original 151</title>
     <meta name="description" content="This Pokedex contains data for the original 151 Pokemon.">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 </head>
 <body>
     <header>
         <h1>Gen 1 Pokémon</h1>
         <h3 id="h3">Click Button to Display</h3>
-        <button id="btn">Fetch Pokémon</button>
+        <button id="btn">Fetch Pokémon</button><br>
+        <button id="caught" class="hide-me" onclick="viewCapturedPokemon()">Indicate Captured Pokemon</button><br>
     </header>
     <main>
+        <ul id="captured">
+        </ul>
         <div class="pokemonsters"></div>
     </main>
+    
 </body>
 <script src="js/request-api.js"></script>
+<script src="js/poke-clientside.js"></script>
+
 </html>

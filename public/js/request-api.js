@@ -40,6 +40,11 @@ const printPokemon = ({
 
     el.append([htmlString]);
     $('.pokemonsters').append(el);
+    /*if($('.name:contains("PIKACHU")')){
+        $('.name:contains("PIKACHU")').parent().prev().addClass("NewClass");*/
+        //$('.name:contains("DRAGONITE")').append("<img src='../assets/pokeball.png'>");
+   // }
+   
 }
 
 
@@ -55,4 +60,29 @@ $('button').click(() => {
     })
     btn.classList.add("hide-me");
     h3.classList.add("hide-me");
+    $('#caught').removeClass("hide-me");
 })
+
+
+/*if($('.name').text().indexOf('Picachu')) {  // Checking the 
+    
+    console.log("found Pikachu");
+    $(".name").text().indexOf('Pikachu').css("background-color", "black");
+
+}*/
+
+/*var text = $('.name').text();
+console.log(text);
+var comparingText = 'Pikachu';
+if(text == comparingText) {
+    
+}*/
+/*$(function() {
+ $('span.name:contains("PIKACHU")').each(function () {
+     console.log("Found PIKACHU");
+            $(this).parent().addClass("NewClass"); // matched td add NewClass
+        });
+
+
+   });*/
+
