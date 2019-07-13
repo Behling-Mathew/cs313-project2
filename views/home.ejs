@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pokedex | Original 151</title>
     <meta name="description" content="This Pokedex contains data for the original 151 Pokemon.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+    
+    
 
 </head>
 <body>
@@ -16,12 +28,34 @@
         <h1>Gen 1 Pokémon</h1>
         <h3 id="h3">Click Button to Display</h3>
         <button id="btn">Fetch Pokémon</button><br>
-        <button id="caught" class="hide-me" onclick="viewCapturedPokemon()">Indicate Captured Pokemon</button><br>
+        <button id="caught" class="hide-me" onclick="viewCapturedPokemon()">Show Captured Pokemon</button><br>
     </header>
     <main>
         <ul id="captured">
         </ul>
-        <div class="pokemonsters"></div>
+    <div class="pokemonsters">
+        </div>
+        
+       <!--<table id="pokeTable" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Sprite</th>
+                <th>Name</th>
+                <th>Dimensions</th>
+            </tr>
+        </thead>
+        <tbody class="pokemonsters">
+          
+          
+        </tbody>
+       <tfoot>
+            <tr>
+                <th>Sprite</th>
+                <th>Name</th>
+                <th>Dimensions</th>
+            </tr>
+        </tfoot>
+    </table>-->
     </main>
     
 </body>

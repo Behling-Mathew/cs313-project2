@@ -5,7 +5,7 @@ body {
     width: 900px;
     margin-left: auto;
     margin-right: auto;
-    color: white;
+    color: darkblue;
     text-align: center;
     padding-top: 30px;
     background-image: url(../assets/background.png);
@@ -16,13 +16,15 @@ body {
 
 h1 {
     color: white;
+    padding: 12px;
+    font-size: 3.6rem;
 }
 
 h3 {
     padding: 10px;
     color: #CC0000;
     position: relative;
-    top: 30px;
+    top: 10px;
 }
 
 .grid-cont {
@@ -54,7 +56,7 @@ header {
 
 #btn {
     background-color: #FFDE00;
-    height: 45px;
+    height: 55px;
     border-radius: 15px;
     color: #3B4CCA;
     font-weight: bold;
@@ -70,15 +72,15 @@ header {
 
 #caught {
     background-color: #3B4CCA;
-    height: 45px;
+    height: 55px;
     width: 175px;
     border-radius: 15px;
     color: #FFDE00;
     font-weight: bold;
     font-size: 1rem;
     position: relative;
-    bottom: 75px;
-    right: 275px;
+    bottom: 80px;
+    right: 340px;
 
 
 }
@@ -99,13 +101,23 @@ header {
 
 .lower {
     text-transform: lowercase;
-    color: yellow;
+    color: darkgreen;
+    font-style: italic;
+    font-weight: bold;
 }
 
 .NewClass {
     background-image: url(../assets/pokeball.png);
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 html {
     background-image: url(../assets/background.png);
+}
+
+/* datatables styling */
+ul.pagination {
+    position: relative;
+    top: 50px;
 }
