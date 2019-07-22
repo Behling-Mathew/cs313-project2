@@ -33,6 +33,9 @@ const printPokemon = ({
     let realWeight = `${weight}` / 10;
     let realHeight = `${height}` / 10;
     
+  
+    
+    
     
     /*let htmlString = "<div class='grid-cont'>" +
         "<img src='" + image + "'>" +
@@ -56,10 +59,10 @@ const printPokemon = ({
             htmlString += '<thead><tr><th>ID</th><th>Sprite</th><th>Name</th><th>Dimensions</th></tr></thead><tbody>';
         }
     //htmlString += '<tr>';
-    htmlString += "<tr><td>" + poke_id + "</td>";
-    htmlString += "<td><img src='" + image + "'></td>"; 
+    htmlString += "<tr><td><input type='hidden'>" + poke_id + "</td>";
+    htmlString += "<td><img src='" + image + "'><button class='mark-btn' id='"+ poke_id + "' onclick='caughtFunction("+poke_id+",\""+nameEl+"\")'>Mark as caught</button><button class='mark-btn2 hide-me2' id='"+ poke_id + "r' onclick='releaseFunction("+poke_id+",\""+nameEl+"\")'>Release to wild</button></td>"; 
     htmlString += "<td><span class='name'>" + nameEl + "</span> is a <span class='lower'>" + `${type}` + "</span> type pokémon.</td>";    
-    htmlString += "<td><ul><li>Weight: " + realWeight + " kg</li><li>Height: " + realHeight + " m</li></ul></td></tr>";
+    htmlString += "<td><ul><li>Height: " + realHeight + " m</li><li>Weight: " + realWeight + " kg</li></ul></td></tr>";
     
     
     // try to get table to all load here but without repeating
@@ -75,8 +78,9 @@ const printPokemon = ({
 } );*/
         
       $('#pokeTable').dataTable({
-          "aLengthMenu": [[10, 50, 100, -1], [10, 50, 100, "All"]],
-          "iDisplayLength": 10,
+          //"aLengthMenu": [[10, 50, 100, -1], [10, 50, 100, "All"]],
+          "aLengthMenu": [[-1, 100, 50, 10], ["All", 100, 50, 10]],
+          "iDisplayLength": 151,
           "columnDefs": [
               {
                   "orderable": false,
@@ -110,6 +114,64 @@ $('#btn').click(() => {
 });
 
 
+function caughtFunction(poke_id,nameEl){
+    console.log("caught function with id", poke_id);
+    
+    var p_id = poke_id;
+   
+    alert(nameEl + " marked as caught!");
+    $('#'+poke_id).addClass("hide-me");
+    $.post("/mark", {id:p_id})
+    
+}
+
+function releaseFunction(poke_id,nameEl){
+    console.log("Release to wild function with id", poke_id);
+    
+    var p_id = poke_id;
+    var r = confirm('Are you sure you wish to release ' +nameEl+'?');
+    if(r == true){
+        alert(nameEl + " was released into the wild. Good bye, old friend!");
+        $('#'+poke_id+'r').addClass("hide-me2");
+        $('#'+poke_id+'r').parent().removeClass("NewClass"); 
+        $.post("/release", {id:p_id})
+        $('ul#captured').empty();
+        //if($('ul#captured').empty()){
+        //viewCapturedPokemon();
+        //}
+        
+          if($('ul#captured').empty()){
+        
+        
+                function myFunction() {
+                    myVar = setTimeout(callFunc, 500);
+                }
+
+                function callFunc() {
+                    viewCapturedPokemon();
+                }
+        myFunction();
+        }
+    
+    }   
+    
+  
+}
+    
+
+
+/*$('button').click(function(){
+    //var pid = $(this).next().val();
+    var pid = {'poke_id' : 151};
+    $.post({
+        traditional: true,
+        url: './mark',
+        contentType: 'application/json',
+        data: JSON.stringify( pid ),
+        dataType: 'json',
+        success: function(response){ console.log( response ); }
+    });
+});*/
 /*if($('.name').text().indexOf('Picachu')) {  // Checking the 
     
     console.log("found Pikachu");
@@ -131,4 +193,9 @@ if(text == comparingText) {
 
 
    });*/
+
+
+                             
+
+
 

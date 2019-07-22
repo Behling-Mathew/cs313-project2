@@ -8,6 +8,26 @@ function search(req, res) {
 
 }
 
+function mark(req, res) {
+    
+    var poke_id = req.body.id;
+    
+    pokeModel.markCaught(poke_id, function(error, results) {
+        res.json(results);
+    });
+}
+
+function release(req, res) {
+    
+    var poke_id = req.body.id;
+    
+    pokeModel.releasePokemon(poke_id, function(error, results) {
+        res.json(results);
+    });
+}
+
 module.exports = {
-    search: search
+    search: search,
+    mark: mark,
+    release: release
 };

@@ -22,5 +22,8 @@
             let per = (data.list.length / 151) * 100;
             $("#captured").append("<li>Your Pokedex is <span class='lower'>" + per.toPrecision(2) + "%</span> complete.</li>");
             $('#caught').addClass("hide-me");
+            $('.mark-btn').addClass("hide-me");
+            $('.NewClass').children().removeClass("hide-me2");
+           
      })
  }

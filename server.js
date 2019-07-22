@@ -1,6 +1,8 @@
 const express = require("express");
 const PORT = process.env.PORT || 5000;
+const bodyParser = require('body-parser');
 require('dotenv').config();
+
 
 const pokeController = require("./controllers/pokeController.js");
 
@@ -10,6 +12,8 @@ let app = express();
 app.use(express.static("public"));
 app.use(express.json()); // support json encoded bodies
 app.use(express.urlencoded({extended: true})); // support url encoded bodies
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
 app.set("views", "views");
 app.set("view engine", "ejs");
@@ -37,6 +41,14 @@ app.post("/search", pokeController.search);
 app.listen(PORT, function() {
     console.log("The server is listening at", PORT);
 });
+
+app.post('/mark', pokeController.mark);
+
+app.post('/release', pokeController.release);
+/*app.post('/mark', pokeController.mark, function(req, res){
+    console.log("received a request for /mark");
+    console.log(req.body)
+});*/
 
 // Model
 

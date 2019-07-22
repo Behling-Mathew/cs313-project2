@@ -90,14 +90,47 @@ header {
     color: #3B4CCA;
 }
 
+button.mark-btn {
+    background-color: #3B4CCA;
+    border-radius: 10px;
+    color: white;
+    font-size: .7rem;
+    max-height: 25px;
+}
+
+button.mark-btn2 {
+    background-color: green;
+    border-radius: 10px;
+    color: white;
+    font-size: .7rem;
+    max-height: 25px;
+}
+
+
+button.mark-btn:hover {
+     background-color: green;
+}
+
+button.mark-btn2:hover {
+     background-color: #CC0000;
+}
+
+
 .name {
     color: red;
     font-weight: bold;
 }
 
 .hide-me {
+    display: none;
     visibility: hidden;
 }
+
+.hide-me2 {
+    display: none;
+    visibility: hidden;
+}
+
 
 .lower {
     text-transform: lowercase;
@@ -109,7 +142,7 @@ header {
 .NewClass {
     background-image: url(../assets/pokeball.png);
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: 50% 75%;
 }
 
 html {
@@ -120,4 +153,15 @@ html {
 ul.pagination {
     position: relative;
     top: 50px;
+}
+
+audio#player {
+    display: none;
+    bottom: 630px;
+    right: 1080px;
+    max-width: 100px;
+}
+
+.custom-select-sm {
+    font-size: 65%;
 }
