@@ -15,6 +15,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Monoton&display=swap" rel="stylesheet">
    <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -24,10 +25,11 @@
 
 </head>
 <body>
+    <p class="region"><%= regionName %></p>
     <header>
-        <h1>Gen 1 Pokémon</h1>
-        <h3 id="h3">Click Button to Display</h3>
-        <button id="btn">Fetch Pokémon</button><br>
+        <h1 class='main-heading'>Gen &nbsp; 1 &nbsp; Pokédex</h1>
+        <h3 id="h3"></h3>
+        <button id="btn">Fetch &nbsp; Pokémon</button><br>
         <button id="caught" class="hide-me" onclick="viewCapturedPokemon()">Show Captured Pokemon</button><br>
     </header>
     <main>

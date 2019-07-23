@@ -1,6 +1,9 @@
 const express = require("express");
 const PORT = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
+const Pokedex = require('pokedex-promise-v2');
+var P = new Pokedex();
+var oldRegion = '';
 require('dotenv').config();
 
 
@@ -18,11 +21,23 @@ app.use(bodyParser.json());
 app.set("views", "views");
 app.set("view engine", "ejs");
 
+
+P.getRegionsList().then(function (response) {
+        oldRegion = response.results[0].name;
+        console.log(oldRegion);
+    })
+    .catch(function (error) {
+        console.log('There was an ERROR: ', error);
+    });
+
+
+
 app.get("/", function(req, res) {
     console.log("Received a request for /");
     
     //res.write("You are in the root.");
-    res.render("home");
+    var params = {regionName: oldRegion};
+    res.render("home", params);
     res.end();
 });
 
@@ -45,23 +60,7 @@ app.listen(PORT, function() {
 app.post('/mark', pokeController.mark);
 
 app.post('/release', pokeController.release);
-/*app.post('/mark', pokeController.mark, function(req, res){
-    console.log("received a request for /mark");
-    console.log(req.body)
-});*/
 
-// Model
-
-
-
-// Test query
-/*pool.query('SELECT name FROM pokemon', (err, result) => {
-  if (err) {
-    return console.error('Error executing query', err.stack)
-  }
-  console.log(result.rows) 
-})*/
-//searchPokemon();
 
 
 

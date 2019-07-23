@@ -1,21 +1,40 @@
 let htmlString = '';
 const getPokemon = (id) => {
-    return axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`).then(res => {
-        let name = res.data.name;
-        let sprite = res.data.sprites.front_default;
-        let weight = res.data.weight;
-        let height = res.data.height;
-        let type = res.data.types[0].type.name;
+    return axios.all([
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`),
+        axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}/`)       
+    ]) 
+        .then(res => {
+        let name = res[0].data.name;
+        let sprite = res[0].data.sprites.front_default;
+        let weight = res[0].data.weight;
+        let height = res[0].data.height;
+        let type = res[0].data.types[0].type.name;
+        let description = res[1].data.flavor_text_entries[52].flavor_text;
         return {
             id,
             name,
             sprite,
             weight,
             height,
-            type
+            type,
+            description
         };
     })
+    
+    
 }
+
+/*const getPokemon2 = (id) => {
+    return axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}/`).then(res => {
+        let description = res.data.flavor_text_entries[1].flavor_text;
+        
+        return {
+           description
+        };
+    })
+}*/
+
 
 const printPokemon = ({
     id,
@@ -23,7 +42,8 @@ const printPokemon = ({
     sprite,
     weight,
     height,
-    type
+    type,
+    description
 }) => {
     //let el = $('<tr>').addClass('pokemon');
 
@@ -32,6 +52,8 @@ const printPokemon = ({
     let nameEl = `${name}`.toUpperCase();
     let realWeight = `${weight}` / 10;
     let realHeight = `${height}` / 10;
+    let poke_description = `${description}`;
+    
     
   
     
@@ -61,9 +83,8 @@ const printPokemon = ({
     //htmlString += '<tr>';
     htmlString += "<tr><td><input type='hidden'>" + poke_id + "</td>";
     htmlString += "<td><img src='" + image + "'><button class='mark-btn' id='"+ poke_id + "' onclick='caughtFunction("+poke_id+",\""+nameEl+"\")'>Mark as caught</button><button class='mark-btn2 hide-me2' id='"+ poke_id + "r' onclick='releaseFunction("+poke_id+",\""+nameEl+"\")'>Release to wild</button></td>"; 
-    htmlString += "<td><span class='name'>" + nameEl + "</span> is a <span class='lower'>" + `${type}` + "</span> type pokémon.</td>";    
-    htmlString += "<td><ul><li>Height: " + realHeight + " m</li><li>Weight: " + realWeight + " kg</li></ul></td></tr>";
-    
+    htmlString += "<td><span class='name'>" + nameEl + "</span> is a <span class='lower'>" + `${type}` + "</span> type pokémon.<p class='description'> "+poke_description+"</p></td>";    
+    htmlString += "<td><ul class='dimensions'><li>Height: " + realHeight + " m</li><li>Weight: " + realWeight + " kg</li></ul></td></tr>";
     
     // try to get table to all load here but without repeating
     
@@ -89,7 +110,7 @@ const printPokemon = ({
       ]
       });
 
-
+       
       }
     //el.append([htmlString]);
     
@@ -103,6 +124,7 @@ $('#btn').click(() => {
     let proms = []
     for (let i = 1; i <= 151; i++) {
         proms.push(getPokemon(i));
+        //proms.push(getPokemon2(i));
     }
 
     Promise.all(proms).then(pokemonsters => {

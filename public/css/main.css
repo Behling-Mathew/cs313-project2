@@ -13,6 +13,10 @@ body {
 
 
 }
+header {
+    background-image: url(../assets/151wallpaper.png);
+    background-size:contain;
+}
 
 h1 {
     color: white;
@@ -22,7 +26,7 @@ h1 {
 
 h3 {
     padding: 10px;
-    color: #CC0000;
+    color: #00008b;
     position: relative;
     top: 10px;
 }
@@ -48,21 +52,22 @@ h3 {
 }
 
 header {
-    background-color: #CC0000;
-    height: 210px;
+    /*background-color: #CC0000;*/
+    height: 363px;
     border-radius: 10px;
 }
 
 
 #btn {
     background-color: #FFDE00;
-    height: 55px;
+    height: 70px;
     border-radius: 15px;
     color: #3B4CCA;
     font-weight: bold;
-    font-size: 1.6rem;
+    font-size: 3rem;
     position: relative;
-    bottom: 50px;
+    bottom: -250px;
+    font-family: 'Monoton', cursive;
 }
 
 #btn:hover {
@@ -72,17 +77,14 @@ header {
 
 #caught {
     background-color: #3B4CCA;
-    height: 55px;
-    width: 175px;
+    height: 70px;
+    width: 250px;
     border-radius: 15px;
     color: #FFDE00;
-    font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.4rem;
     position: relative;
-    bottom: 80px;
-    right: 340px;
-
-
+    bottom: -205px;
+    font-family: 'Monoton', cursive;
 }
 
 #caught:hover {
@@ -94,16 +96,18 @@ button.mark-btn {
     background-color: #3B4CCA;
     border-radius: 10px;
     color: white;
-    font-size: .7rem;
-    max-height: 25px;
+    font-size: .65rem;
+    max-height: 26px;
+    width: 100px;
 }
 
 button.mark-btn2 {
     background-color: green;
     border-radius: 10px;
     color: white;
-    font-size: .7rem;
-    max-height: 25px;
+    font-size: .65rem;
+    max-height: 26px;
+    width: 100px;
 }
 
 
@@ -164,4 +168,49 @@ audio#player {
 
 .custom-select-sm {
     font-size: 65%;
+}
+
+p.description {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+.dimensions {
+    font-size: 1.1rem;
+    text-align: left;
+    padding: 20px;
+    margin-top: 10px;
+    
+}
+
+ul#captured li {
+    text-align: left;
+    padding-left: 15px;
+    background-color: #CC0000;
+    color: white;
+    margin-top: 10px;
+    width: 200px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 10px;
+    
+}
+
+ul li#completion-result {
+    color: darkblue;
+    background-color: white;
+}
+
+.main-heading {
+    font-family: 'Monoton', cursive;
+    position: relative;
+    bottom: 40px;
+    padding-top: 20px;
+}
+
+.region {
+    position: relative;
+    left: 215px;
+    top: 10px;
+    text-transform: uppercase;
+    font-weight: lighter; 
 }
